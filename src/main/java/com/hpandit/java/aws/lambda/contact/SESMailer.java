@@ -16,7 +16,7 @@ public class SESMailer {
 
     private static String RECIPIENT_EMAIL = "harshadpan@gmail.com";
 
-    public void sendEmail(final ContactForm contactForm, final Context context) {
+    public void sendEmail(final ContactForm contactForm, final Context context) throws Exception {
 
         try {
             AmazonSimpleEmailService client =
@@ -40,8 +40,10 @@ public class SESMailer {
         } catch (Exception ex) {
             context.getLogger().log("The email was not sent. Error message: "
                     + ex.getMessage() + " exception is "+ ex);
+            throw ex;
         } catch (Throwable t) {
             context.getLogger().log("in the throwable = "+ t);
+            throw new Exception("An error occurred while trying to send an email");
         }
     }
 

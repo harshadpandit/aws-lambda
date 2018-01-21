@@ -30,12 +30,13 @@ public class BootStrap {
     }
 
     @Bean
-    public LambdaContactFormHandler lambdaContactFormHandler() {
-        return new LambdaContactFormHandler(sesMailer());
-    }
-
-    @Bean
     public SESMailer sesMailer() {
         return new SESMailer();
     }
+
+    @Bean
+    public LambdaContactFormHandler lambdaContactFormHandler() {
+        return new LambdaContactFormHandler();
+    }
+
 }
